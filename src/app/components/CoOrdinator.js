@@ -50,7 +50,7 @@ function CoOrdinator() {
       ></div>
       <div className="flex flex-wrap justify-center gap-7 gap-y-12 mt-12">
         {committeNames.map((name, i) => (
-          <CoOrdinatorCard cardTitle={name} optText={committeWorks[i]} 
+          <CoOrdinatorCard key={name} cardTitle={name} optText={committeWorks[i]} 
           delay={0.25}/>
         ))}
       </div>
