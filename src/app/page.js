@@ -12,11 +12,11 @@ import Switch from "./components/Switch";
 import { useEffect, useState } from "react";
 import CoOrdinator from "./components/CoOrdinator";
 import Brochure from "./components/Brochure";
+import { AnimatePresence } from "framer-motion";
 
 export default function Home() {
   const [LocoScroll, setLocoScroll] = useState(null);
   const [brImg, setBrImg] = useState(null);
-  console.log(brImg);
 
   useEffect(() => {
     async function getLocomotive() {
@@ -42,7 +42,9 @@ export default function Home() {
 
   return (
     <main data-scroll-container className="relative">
-      {brImg && <Brochure key={Math.random()} brImg={brImg} setBrImg={setBrImg} />}
+      <AnimatePresence mode="wait">
+        {brImg && <Brochure key={brImg} brImg={brImg} setBrImg={setBrImg} />}
+      </AnimatePresence>
       <Switch />
       <Lines />
       <Header scroll={LocoScroll} />

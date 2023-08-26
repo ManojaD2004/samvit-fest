@@ -8,6 +8,7 @@ function Competition({ setBrImg }) {
   const [choice, setChoice] = useState("all");
 
   const brochure = {
+    all: [],
     literary: ["l_debate", "l_quiz"],
     art: [
       "a_face",
@@ -18,8 +19,17 @@ function Competition({ setBrImg }) {
       "m_mad",
     ],
     esports: ["esports", "esports", "esports"],
-    tech: ["tech_css", "tech_code", "tech_quiz", "", "tech_paper"],
-    misc: ["fashion", "", "treasure", "comedy"],
+    tech: ["tech_css", "tech_code", "tech_quiz", "ce", "tech_paper"],
+    misc: ["fashion", "dj", "treasure", "comedy"],
+    cultural: [
+      "cd_group",
+      "cd_solo",
+      "ws_group",
+      "ws_solo",
+      "battle_of_bands",
+      "c_music",
+      "w_music",
+    ],
   };
 
   const competitonList = {
@@ -106,6 +116,14 @@ function Competition({ setBrImg }) {
       ...competitonList.art,
       ...competitonList.literary,
     ];
+    brochure.all = [
+      ...brochure.misc,
+      ...brochure.esports,
+      ...brochure.cultural,
+      ...brochure.tech,
+      ...brochure.art,
+      ...brochure.literary,
+    ]
   }
   calAll();
 
@@ -122,7 +140,7 @@ function Competition({ setBrImg }) {
         className="text-center hover:scale-90 transition-all ease-in-out duration-500
          text-[#311D3F] font-bold text-9xl"
       >
-        Competition
+        Competitions
       </h1>
       <div
         data-scroll

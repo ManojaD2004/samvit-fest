@@ -1,18 +1,20 @@
 import Image from "next/image";
 import React from "react";
 import { TypeAnimation } from "react-type-animation";
+import PlusIcons from "./PlusIcons";
 
 function Feed() {
   const logo = "/images/logo.png";
 
   return (
-    <section data-scroll-section className="w-full h-screen tmLand bg-cover">
+    <section data-scroll-section className="w-full tmLand h-screen bg-cover">
       {/* Overlay */}
       <div
         data-scroll
-        className="w-full h-screen bg-[rgba(176,37,37,0.7)] absolute
-      z-0"
+        className="w-full h-screen bg-gradient-to-tr from-[rgb(142,19,19)] to-[rgb(214,29,29)] absolute
+        z-0"
       >
+        <PlusIcons />
 
         {/* Big Title */}
         <div
