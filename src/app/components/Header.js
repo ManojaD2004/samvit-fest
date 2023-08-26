@@ -1,4 +1,3 @@
-import { useRouter } from "next/navigation";
 import React from "react";
 import JumpTag from "./Header_Subs_Comp/JumpTag";
 import Image from "next/image";

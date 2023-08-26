@@ -3,7 +3,6 @@ import CompetitonLogo from "./CompetitonLogo";
 import CompetitonCard from "./CompetitonCard";
 import { AnimatePresence } from "framer-motion";
 import PlusIcons from "./PlusIcons";
-import Brochure from "./Brochure";
 
 function Competition({ setBrImg }) {
   const [choice, setChoice] = useState("all");
