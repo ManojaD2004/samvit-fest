@@ -7,15 +7,15 @@ function CoOrdinator() {
   const committeNames = [
     "Vilas C P",
     "Aditya S",
-    "Hitha",
-    "Srajanaya Sheety",
+    "Hitha A B Gowda",
+    "Srajanya Shetty",
     "Manoja D",
-    "Harshitha M",
-    "Shashi",
-    "Ashrita",
+    "Harshith M",
+    "Shashikiran",
+    "Ashritha S",
     "Sinchan D",
-    "Ashutosh Jha",
-    "Yetiraj",
+    "Ashutosh Kumar Jha",
+    "Yathiraj P",
   ];
   const committeWorks = [
     "Student Head",
@@ -30,50 +30,82 @@ function CoOrdinator() {
     "Food Committe",
     "Volunter Committe",
   ];
+  const committeImg = [
+    "vilas.jpeg",
+    "aditya.jpeg",
+    "hitha.png",
+    "srajanya.jpeg",
+    "manoja.jpeg",
+    "harshith.jpeg",
+    "shashi.jpg",
+    "ashritha.jpeg",
+    "sinchan.jpeg",
+    "ashutosh.jpg",
+    "yathiraj.jpeg",
+  ];
   return (
     <section
       data-scroll-section
-      className="events w-full h-auto pb-12 px-2 pt-9 bg-[#E23E57] relative"
+      className="events w-full h-auto pb-12 md:px-2 pt-9 bg-[#E23E57] relative"
     >
       <PlusIcons />
       <h1
         data-scroll
         className="text-[#311D3F] hover:scale-90 transition-all ease-in-out duration-500
-      text-8xl text-center font-bold"
-      >
-        ORGANISING COMMITTEE
-      </h1>
-      <div
-        data-scroll
-        className="border-4 border-[#311D3F]
-      mt-10 mx-16 z-[2]"
-      ></div>
-      <div className="flex flex-wrap justify-center gap-7 gap-y-12 mt-12">
-        {committeNames.map((name, i) => (
-          <CoOrdinatorCard key={name} cardTitle={name} optText={committeWorks[i]} 
-          delay={0.25}/>
-        ))}
-      </div>
-
-      <h1
-        data-scroll
-        className="text-[#311D3F] hover:scale-90 transition-all ease-in-out duration-500
-      text-8xl text-center font-bold mt-14"
+      md:text-8xl text-4xl text-center font-bold"
       >
         FACULTY DEPARTMENT
       </h1>
       <div
         data-scroll
         className="border-4 border-[#311D3F]
-      mt-10 mx-16 z-[2]"
+      mt-10 mx-8 md:mx-16 z-[2]"
       ></div>
-      <div className="flex flex-wrap justify-center gap-12 mt-12">
-        <CoOrdinatorCard cardTitle={"Shruthi Gowda"} optText={"Faculty Head"} />
+      <div className="flex flex-wrap items-center justify-center gap-12 mt-12">
         <CoOrdinatorCard
-          cardTitle={"Dr Ravi Kumar"}
-          optText={"Principle BGSCET"}
+          imgSrc={"/committeFaculty/raju.jpeg"}
+          cardTitle={"Dr.G T Raju"}
+          optText={"Chairman"}
         />
-        <CoOrdinatorCard cardTitle={"Dr GT Raju"} optText={"Director BGSCET"} />
+        <CoOrdinatorCard
+          imgSrc={"/committeFaculty/ravi.jpeg"}
+          cardTitle={"Dr. Ravikumar G K"}
+          optText={"Vice Chairman"}
+        />
+        <CoOrdinatorCard
+          imgSrc={""}
+          cardTitle={"Mrs. Shruthi K S"}
+          optText={"Organising Secretary"}
+        />
+        <CoOrdinatorCard
+          imgSrc={""}
+          cardTitle={"Mr. Hanumesha G K"}
+          optText={"Treasurer"}
+        />
+      </div>
+
+      <h1
+        data-scroll
+        className="text-[#311D3F] hover:scale-90 transition-all ease-in-out duration-500
+      md:text-8xl text-4xl text-center font-bold mt-14"
+      >
+        ORGANISING COMMITTEE
+      </h1>
+      <div
+        data-scroll
+        className="border-4 border-[#311D3F]
+      mt-10 mx-8 md:mx-16 z-[2]"
+      ></div>
+      <div className="flex flex-wrap justify-center gap-x-5 gap-y-16 mt-16">
+        {committeNames.map((name, i) => (
+          <CoOrdinatorCard
+            key={name}
+            imgSrc={`/committee/${committeImg[i]}`}
+            cardTitle={name}
+            optText={committeWorks[i]}
+            delay={0.25}
+          />
+        ))}
       </div>
     </section>
   );

@@ -8,15 +8,18 @@ import Sponsorship from "./components/Sponsorship";
 import Register from "./components/Register";
 import Credits from "./components/CreditsPage";
 import Lines from "./components/Lines";
-import Switch from "./components/Switch";
 import { useEffect, useState } from "react";
 import CoOrdinator from "./components/CoOrdinator";
 import Brochure from "./components/Brochure";
 import { AnimatePresence } from "framer-motion";
+import Loading from "./components/Loading";
+import Footer from "./components/Footer";
 
 export default function Home() {
   const [LocoScroll, setLocoScroll] = useState(null);
   const [brImg, setBrImg] = useState(null);
+  if (LocoScroll) {
+  }
 
   useEffect(() => {
     async function getLocomotive() {
@@ -45,17 +48,23 @@ export default function Home() {
       <AnimatePresence mode="wait">
         {brImg && <Brochure key={brImg} brImg={brImg} setBrImg={setBrImg} />}
       </AnimatePresence>
-      <Switch />
-      <Lines />
       <Header scroll={LocoScroll} />
-      <Feed />
-      <Events />
-      <Competition setBrImg={setBrImg} />
-      {/* <Sponsorship /> */}
-      <AboutUs />
-      <CoOrdinator />
-      <Register />
-      <Credits />
+      {LocoScroll === null ? (
+        <Loading />
+      ) : (
+        <>
+          <Lines />
+          <Feed />
+          <Events />
+          <Competition setBrImg={setBrImg} />
+          {/* <Sponsorship /> */}
+          <AboutUs />
+          <CoOrdinator />
+          <Register />
+          <Footer />
+          {/* <Credits /> */}
+        </>
+      )}
     </main>
   );
 }

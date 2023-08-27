@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import CompetitonLogo from "./CompetitonLogo";
 import CompetitonCard from "./CompetitonCard";
 import { AnimatePresence } from "framer-motion";
@@ -6,6 +6,7 @@ import PlusIcons from "./PlusIcons";
 
 function Competition({ setBrImg }) {
   const [choice, setChoice] = useState("all");
+  const canChange = useRef(true);
 
   const brochure = {
     all: [],
@@ -123,39 +124,59 @@ function Competition({ setBrImg }) {
       ...brochure.tech,
       ...brochure.art,
       ...brochure.literary,
-    ]
+    ];
   }
+
   calAll();
+
+  function preload() {
+    for (let i = 0; i < brochure[choice].length; i++) {
+      let img = new window.Image();
+      img.src = `/brochure/${choice}/${brochure[choice][i]}.png`;
+    }
+  }
+  preload();
+
+  function handleClick(choice) {
+    if (canChange.current === true) {
+      canChange.current = false;
+      setChoice(choice);
+      setTimeout(
+        () => (canChange.current = true),
+        competitonList[choice].length * 250 + 1200
+      );
+    }
+  }
 
   return (
     <div
       data-scroll-section
       id="competition"
-      className="w-full pb-10 px-2 pt-9
+      className="w-full pb-10 md:px-2 pt-9
     bg-red-500 overflow-hidden"
     >
       <PlusIcons />
       <h1
         data-scroll
         className="text-center hover:scale-90 transition-all ease-in-out duration-500
-         text-[#311D3F] font-bold text-9xl"
+         text-[#311D3F] text-[40px] font-bold md:text-9xl"
       >
         Competitions
       </h1>
       <div
         data-scroll
         className="border-4 border-[#311D3F]
-        mt-10 mx-14"
+        mt-10 md:mx-14 mx-8"
       ></div>
       <div
         data-scroll
-        className="flex justify-between items-center mx-14
-        mt-10"
+        className="flex justify-center md:justify-between items-center md:mx-14
+        mt-10 flex-wrap gap-x-4 gap-y-4 mx-8"
       >
         <CompetitonLogo
           data-scroll
           onClick={() => {
-            setChoice("all");
+            handleClick("all");
           }}
           title="All Competition"
           logoSrc="https://img.icons8.com/external-bearicons-glyph-bearicons/100/external-Competition-business-and-marketing-bearicons-glyph-bearicons.png"
@@ -163,38 +184,38 @@ function Competition({ setBrImg }) {
         <CompetitonLogo
           data-scroll
           onClick={() => {
-            setChoice("literary");
+            handleClick("literary");
           }}
           title="Literary"
           logoSrc="https://img.icons8.com/ios-glyphs/100/quiz.png"
         />
         <CompetitonLogo
           data-scroll
-          onClick={() => setChoice("art")}
+          onClick={() => handleClick("art")}
           title="Art and Media"
           logoSrc="https://img.icons8.com/ios-filled/100/artist.png"
         />
         <CompetitonLogo
           data-scroll
-          onClick={() => setChoice("esports")}
+          onClick={() => handleClick("esports")}
           title="E-Sports"
           logoSrc="https://img.icons8.com/ios-filled/100/controller.png"
         />
         <CompetitonLogo
           data-scroll
-          onClick={() => setChoice("tech")}
+          onClick={() => handleClick("tech")}
           title="Tech"
           logoSrc="https://img.icons8.com/ios-filled/100/source-code.png"
         />
         <CompetitonLogo
           data-scroll
-          onClick={() => setChoice("misc")}
+          onClick={() => handleClick("misc")}
           title="Misc"
           logoSrc="https://img.icons8.com/ios-filled/100/metal-music.png"
         />
         <CompetitonLogo
           data-scroll
-          onClick={() => setChoice("cultural")}
+          onClick={() => handleClick("cultural")}
           title="Cultural"
           logoSrc="https://img.icons8.com/ios-filled/100/dancing-party.png"
         />
@@ -202,7 +223,7 @@ function Competition({ setBrImg }) {
       <div
         data-scroll
         className="border-4 border-[#311D3F]
-        mt-10 mx-14"
+        mt-10 mx-8 md:mx-14"
       ></div>
       <div
         data-scroll

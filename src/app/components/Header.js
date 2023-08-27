@@ -18,7 +18,7 @@ function Header({ scroll }) {
     <header className="w-full z-[9] h-[70px] fixed flex">
       {/* The Logo Of Fest */}
       <div
-        className="group hover:h-40 h-full transition-all duration-300 ease-out
+        className="group hidden md:block hover:h-40 h-full transition-all duration-300 ease-out
        w-24 bg-black rounded-br-lg cursor-pointer overflow-hidden relative"
       >
         <Image
@@ -46,7 +46,7 @@ function Header({ scroll }) {
           from-[rgba(244,5,5,0.69)] to-transparent h-full"
         >
           <div
-            className="w-[88%] h-full flex items-center m-auto
+            className="md:w-[88%] w-full h-full flex items-center m-auto
             justify-evenly"
           >
             <JumpTag href="#events" handleClick={handleClick} title="Events" />
@@ -76,7 +76,7 @@ function Header({ scroll }) {
 
       {/* Register Now CTA */}
       <div
-        className="group hover:w-56 transition-all duration-300 ease-out w-52 bg-black rounded-bl-xl
+        className="group hover:w-56 hidden md:block transition-all duration-300 ease-out w-52 bg-black rounded-bl-xl
         cursor-pointer overflow-hidden relative"
         onClick={() => {
           const eleToScroll = document.querySelector('#register');

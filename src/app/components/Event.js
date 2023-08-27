@@ -3,15 +3,19 @@ import React from "react";
 import { motion } from "framer-motion";
 
 function Event({ srcImg, eventTitle, speed }) {
+  let dragable = true;
+  if (window.innerWidth < 768) {
+    dragable = false;
+  }
  
-    speed = Math.floor(Math.random() * (2 - 3 + 1) + 3);
+  speed = Math.floor(Math.random() * (2 - 3 + 1) + 3);
   
   return (
     <motion.div
       data-scroll
       whileInView="visible"
-      drag
-      dragSnapToOrigin
+      drag={dragable}
+      dragSnapToOrigin={dragable}
       whileDrag={{ scale: 1.05 }}
       dragTransition={{ bounceStiffness: 100, bounceDamping: 12 }}
       initial="hidden"
@@ -30,9 +34,9 @@ function Event({ srcImg, eventTitle, speed }) {
       <div
         data-scroll
         data-scroll-speed={speed}
-        className="w-80 h-96 border-8 border-[#311D3F] cursor-grab
-    rounded-lg mx-4 my-8 relative group overflow-hidden
-    bg-[#311D3F] shadow-2xl shadow-gray-800"
+        className="md:w-80 h-[340px] flex-shrink-0 w-[240px] md:h-96 border-8 border-[#311D3F] cursor-grab
+    rounded-lg md:mx-4 md:my-8 relative group overflow-hidden
+    bg-[#34263e] mx-auto shadow-2xl shadow-gray-800"
       >
         <Image
           data-scroll

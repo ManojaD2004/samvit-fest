@@ -40,7 +40,7 @@ function CompetitonCard({ comptTitle, comptImg, delay, onClick }) {
       <div
         onClick={onClick}
         data-scroll
-        className="w-[330px] flex-shrink-0 h-[240px] mt-10 
+        className="md:w-[330px] w-[240px] h-72 flex-shrink-0 md:h-[240px] mt-10 
     border-8 border-black cursor-pointer border-double relative
     transition-all duration-150 ease-out hover:border-white
     group overflow-hidden hover:shadow-black hover:shadow-lg"

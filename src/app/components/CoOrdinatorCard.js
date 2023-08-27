@@ -34,15 +34,15 @@ function CoOrdinatorCard({ imgSrc, cardTitle, optText, delay }) {
         },
       }}
     >
-      <div className="group hover:shadow-lg relative hover:shadow-black hover:scale-105  transition-all duration-150 ease-out bg-[#311D3F] shadow-black rounded-lg shadow-sm flex-shrink-0  cursor-pointer mx-6 w-56 h-auto border-8 border-[#311D3F]">
+      <div className="group w-[240px]  h-auto md:w-[300px] overflow-hidden hover:shadow-lg relative hover:shadow-black hover:scale-105  transition-all duration-150 ease-out bg-[#311D3F] shadow-black rounded-lg shadow-sm flex-shrink-0  cursor-pointer md:mx-6 border-8 border-[#311D3F]">
         <div className="w-full h-72 overflow-hidden">
           <img
             alt=""
-            src="/images/bgmi.jpg"
-            className="w-56 h-full group-hover:scale-110 transition-all duration-150 ease-out object-cover"
+            src={imgSrc}
+            className="w-full h-full group-hover:scale-110 transition-all duration-150 ease-out object-cover"
           />
         </div>
-        <div className="absolute top-1/2 w-72 left-[92%] -translate-x-1/2 -translate-y-1/2 -rotate-90">
+        <div className="absolute top-1/2 w-72 left-[94%] -translate-x-1/2 -translate-y-1/2 -rotate-90">
           <h3 className="text-white inline-block ml-3 group-hover:scale-90 group-hover:text-black group-hover:bg-white transition-all duration-150 ease-out rounded-t-lg p-2  bg-[#311D3F] text-center ">
             {cardTitle}
           </h3>

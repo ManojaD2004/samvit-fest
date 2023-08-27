@@ -11,7 +11,7 @@ function Feed() {
       {/* Overlay */}
       <div
         data-scroll
-        className="w-full h-screen bg-gradient-to-tr from-[rgb(142,19,19)] to-[rgb(214,29,29)] absolute
+        className="w-full h-screen bg-gradient-to-tr from-[rgb(176,35,35)] to-[rgb(214,29,29)] absolute
         z-0"
       >
         <PlusIcons />
@@ -19,8 +19,8 @@ function Feed() {
         {/* Big Title */}
         <div
           data-scroll
-          className="absolute top-32 left-28  
-        w-[500px]"
+          className="absolute left-1/2 top-[75%] -translate-y-1/2 -translate-x-1/2 md:translate-x-[none] md:translate-y-[none] w-full md:top-32 md:left-28  
+        md:w-[500px]"
         >
           <TypeAnimation
             data-scroll
@@ -36,16 +36,17 @@ function Feed() {
             speed={30}
             deletionSpeed={30}
             repeat={Infinity}
+            
             wrapper="h1"
-            className="hidden md:block
-          text-9xl text-white m-0 font-bold"
+            className="block text-4xl text-center
+          md:text-9xl text-white m-0 font-bold"
           />
           {/* <h1 className="text-9xl text-black m-0 font-bold">SAMVIT</h1>
           <h1 className="text-9xl font-bold m-0">2023</h1> */}
         </div>
 
         {/* Tagline */}
-        <div data-scroll className="absolute top-36 right-48">
+        <div data-scroll className="absolute w-full text-center md:text-left md:w-auto left-1/2 top-[85%] -translate-y-1/2 -translate-x-1/2 md:translate-x-[none] md:left-[auto] md:translate-y-[none] md:top-36 md:right-48">
           <h4 data-scroll className="text-lg">
             - Embrace the{" "}
             <b data-scroll className="font-bold text-black">
@@ -57,7 +58,7 @@ function Feed() {
         {/* Dates */}
         <div
           data-scroll
-          className="bg-black w-64 rounded-r-xl h-16 absolute
+          className="bg-black hidden md:block w-64 rounded-r-xl h-16 absolute
         bottom-6 left-2 group cursor-pointer overflow-hidden"
         >
           <div className="relative ">
@@ -85,7 +86,7 @@ function Feed() {
         </div>
 
         {/* Big Logo */}
-        <div data-scroll className="w-56 absolute bottom-24 right-[182px]">
+        <div data-scroll className="w-56 absolute left-1/2 top-[40%] -translate-y-1/2 -translate-x-1/2 md:translate-x-[none] md:left-[auto] md:top-[auto] md:translate-y-[none] md:bottom-24 md:right-[182px]">
           <Image
             data-scroll
             width={0}

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 
 function Brochure({ brImg, setBrImg }) {
   return (
@@ -47,7 +48,7 @@ function Brochure({ brImg, setBrImg }) {
       >
         <img
           src={brImg}
-          className="pointer-events-none shadow-2xl border-[3vw] border-black z-50 shadow-gray-900 scale-50 object-cover"
+          className="pointer-events-none shadow-2xl border-[3vw] border-black z-50 shadow-gray-900 md:scale-50 object-cover"
           alt=""
         />
       </motion.div>
