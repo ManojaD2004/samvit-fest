@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import JumpTag from "./Header_Subs_Comp/JumpTag";
 import Image from "next/image";
-import Register from "./Register";
 
 function Header({ scroll }) {
   const logo = "/images/logo.png";
@@ -99,7 +98,7 @@ function Header({ scroll }) {
         >
           <Image
             src={doubleArrowRed}
-            className="group-hover:top-[19px] brightness-90 top-10 -rotate-45 absolute transition-all duration-100 ease-out -left-7 group-hover:left-2"
+            className="group-hover:top-[18px] brightness-90 top-10 -rotate-45 absolute transition-all duration-100 ease-out -left-7 group-hover:left-2"
             height={32}
             width={32}
             alt=""
