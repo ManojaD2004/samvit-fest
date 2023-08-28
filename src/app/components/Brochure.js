@@ -48,7 +48,7 @@ function Brochure({ brImg, setBrImg }) {
       >
         <img
           src={brImg}
-          className="pointer-events-none shadow-2xl border-[3vw] border-black z-50 shadow-gray-900 md:scale-50 object-cover"
+          className="pointer-events-none shadow-2xl border-[2vw] md:border-[3vw] border-black z-50 shadow-gray-900 md:scale-50 object-cover"
           alt=""
         />
       </motion.div>

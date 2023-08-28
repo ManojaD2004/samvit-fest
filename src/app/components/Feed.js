@@ -11,7 +11,7 @@ function Feed() {
       {/* Overlay */}
       <div
         data-scroll
-        className="w-full h-screen bg-gradient-to-tr from-[rgb(176,35,35)] to-[rgb(214,29,29)] absolute
+        className="w-full h-screen graBg absolute
         z-0"
       >
         <PlusIcons />

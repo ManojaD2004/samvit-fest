@@ -53,7 +53,12 @@ function Register() {
             className="text-xl font-semibold hover:text-gray-100 cursor-pointer
                 "
           >
-            Instagram: samvitfest2023
+            <Link
+              target="_blank"
+              href={"https://www.instagram.com/samvit.2023/"}
+            >
+              Instagram: samvit.2023
+            </Link>
           </h3>
           <div
             data-scroll
@@ -61,8 +66,7 @@ function Register() {
                  rounded-lg cursor-pointer flex items-center transition-all duration-150 ease-out
                 justify-evenly group  hover:bg-slate-100"
           >
-            <Link 
-            href={''}>
+            <Link href={""}>
               <h4
                 data-scroll
                 className="text-2xl group-hover:text-slate-800

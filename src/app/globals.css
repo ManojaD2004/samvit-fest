@@ -95,8 +95,38 @@ body {
   background-color: rgb(205, 25, 25);
 }
 
-.tmLand {
-  background-image: url("/images/bg.jpg");
+.graBg {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background: linear-gradient(
+    47deg,
+    rgb(143, 11, 11) 0%,
+    rgb(174, 48, 19) 25%,
+    rgb(134, 8, 8) 50%,
+    rgb(207, 29, 73) 75%,
+    rgb(169, 15, 15) 100%
+  );
+  background-size: 400% 400%;
+  background-position: 50% 50%;
+  animation: bgAnimation 30s ease infinite;
+}
+
+@keyframes bgAnimation {
+  0% {
+    background-position: 0% 50%;
+    
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes bgPluse {
+  from {filter: contrast(100%);}
+  to {filter: contrast(130%);}
 }
 
 .text-shadow {
@@ -113,6 +143,10 @@ p,
 pre {
   font-family: "Chakra Petch", sans-serif;
   color: white;
+}
+.tmLand {
+  background-image: url("/images/bg.jpg");
+  animation: bgPluse 10s ease infinite alternate;
 }
 
 .plusBg {
