@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 function Register() {
@@ -9,7 +10,10 @@ function Register() {
       className="w-full pb-10 md:px-2 pt-9
     bg-red-500"
     >
-      <h1 data-scroll className="text-center hover:scale-90 transition-all ease-in-out duration-500 text-black font-bold text-6xl md:text-9xl">
+      <h1
+        data-scroll
+        className="text-center hover:scale-90 transition-all ease-in-out duration-500 text-black font-bold text-6xl md:text-9xl"
+      >
         Register
       </h1>
       <div
@@ -57,22 +61,21 @@ function Register() {
                  rounded-lg cursor-pointer flex items-center transition-all duration-150 ease-out
                 justify-evenly group  hover:bg-slate-100"
           >
-            <h4
-              data-scroll
-              className="text-2xl group-hover:text-slate-800
+            <Link 
+            href={''}>
+              <h4
+                data-scroll
+                className="text-2xl group-hover:text-slate-800
                      group-hover:scale-90 transition-all duration-150 ease-in
                      font-semibold"
-            >
-              Register Now
-            </h4>
+              >
+                Register Now
+              </h4>
+            </Link>
           </div>
         </div>
         <div data-scroll className="hidden md:block h-72">
-          <img
-            data-scroll
-            className="h-full object-cover invert"
-            src={logo}
-          />
+          <img data-scroll className="h-full object-cover invert" src={logo} />
         </div>
       </div>
     </div>

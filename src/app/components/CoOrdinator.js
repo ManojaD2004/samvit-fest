@@ -73,7 +73,7 @@ function CoOrdinator() {
           optText={"Vice Chairman"}
         />
         <CoOrdinatorCard
-          imgSrc={""}
+          imgSrc={"/committeFaculty/shruthi.jpeg"}
           cardTitle={"Mrs. Shruthi K S"}
           optText={"Organising Secretary"}
         />
