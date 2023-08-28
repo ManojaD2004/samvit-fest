@@ -1,8 +1,13 @@
 import React from "react";
 import JumpTag from "./Header_Subs_Comp/JumpTag";
 import Image from "next/image";
+import Register from "./Register";
 
 function Header({ scroll }) {
+  let registerYes = false;
+  if (window.innerWidth) {
+    registerYes = true;
+  }
   const logo = "/images/logo.png";
   const doubleArrow = "/logo/doubleArrow.png";
 
@@ -71,7 +76,7 @@ function Header({ scroll }) {
               handleClick={handleClick}
               title="Sponsors"
             /> */}
-            {window.innerWidth < 768 && (
+            {registerYes < 768 && (
               <JumpTag
                 href="#register"
                 handleClick={handleClick}
