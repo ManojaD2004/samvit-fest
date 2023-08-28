@@ -18,8 +18,6 @@ import Footer from "./components/Footer";
 export default function Home() {
   const [LocoScroll, setLocoScroll] = useState(null);
   const [brImg, setBrImg] = useState(null);
-  if (LocoScroll) {
-  }
 
   useEffect(() => {
     async function getLocomotive() {

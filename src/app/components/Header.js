@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import JumpTag from "./Header_Subs_Comp/JumpTag";
 import Image from "next/image";
 import Register from "./Register";
 
 function Header({ scroll }) {
-  let registerYes = false;
-  if (window.innerWidth) {
-    registerYes = true;
-  }
   const logo = "/images/logo.png";
   const doubleArrow = "/logo/doubleArrow.png";
+  const doubleArrowRed = "/logo/doubleArrowRed.png";
+  const [showReg, setShowReg] = useState(true);
+  useEffect(() => {
+    if (window.innerWidth > 768) {
+      setShowReg(false);
+    }
+  }, []);
 
   function handleClick(ele) {
     ele.preventDefault();
@@ -71,12 +74,7 @@ function Header({ scroll }) {
               handleClick={handleClick}
               title="About Fest"
             />
-            {/* <JumpTag
-              href="#sponsors"
-              handleClick={handleClick}
-              title="Sponsors"
-            /> */}
-            {registerYes < 768 && (
+            {showReg === true && (
               <JumpTag
                 href="#register"
                 handleClick={handleClick}
@@ -88,34 +86,39 @@ function Header({ scroll }) {
       </div>
 
       {/* Register Now CTA */}
-      <div
-        className="group hover:w-56 hidden md:block transition-all duration-300 ease-out w-52 bg-black rounded-bl-xl
+      {showReg !== true && (
+        <div
+          className="group hidden md:block transition-all duration-300 ease-out w-52 bg-black rounded-bl-xl
         cursor-pointer overflow-hidden relative"
-        onClick={() => {
-          const eleToScroll = document.querySelector("#register");
-          if (scroll) {
-            scroll.scrollTo(eleToScroll);
-          }
-        }}
-      >
-        <Image
-          src={doubleArrow}
-          className="invert top-5 absolute transition-all duration-150 ease-out -left-7 group-hover:left-2"
-          height={32}
-          width={32}
-          alt=""
-        />
-        <h3 className="text-xl transition-all duration-200 ease-in-out font-bold top-[21px] left-5 group-hover:left-[52px] absolute">
-          Register Now
-        </h3>
-        <Image
-          src={doubleArrow}
-          className="invert top-5 transition-all duration-150 ease-out absolute right-5 group-hover:-right-4"
-          height={32}
-          width={32}
-          alt=""
-        />
-      </div>
+          onClick={() => {
+            const eleToScroll = document.querySelector("#register");
+            if (scroll) {
+              scroll.scrollTo(eleToScroll);
+            }
+          }}
+        >
+          <Image
+            src={doubleArrowRed}
+            className="group-hover:top-[19px] brightness-90 top-10 -rotate-45 absolute transition-all duration-100 ease-out -left-7 group-hover:left-2"
+            height={32}
+            width={32}
+            alt=""
+          />
+          <h3 className="text-xl transition-all duration-200 ease-in-out font-bold top-[21px] left-5 group-hover:left-[50px] absolute">
+            Register{" "}
+            <span className="group-hover:text-red-500 transition-all group-hover:scale-150 duration-200 ease-in-out">
+              Now
+            </span>
+          </h3>
+          <Image
+            src={doubleArrow}
+            className="invert top-5 -rotate-45 transition-all duration-100 ease-out absolute right-5 group-hover:-top-3 group-hover:-right-4"
+            height={32}
+            width={32}
+            alt=""
+          />
+        </div>
+      )}
     </header>
   );
 }
