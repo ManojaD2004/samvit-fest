@@ -18,6 +18,12 @@ function Header({ scroll }) {
     <header className="w-full z-[9] h-[70px] fixed flex">
       {/* The Logo Of Fest */}
       <div
+        onClick={() => {
+          const eleToScroll = document.querySelector("#feed");
+          if (scroll) {
+            scroll.scrollTo(eleToScroll);
+          }
+        }}
         className="group hidden md:block hover:h-40 h-full transition-all duration-300 ease-out
        w-24 bg-black rounded-br-lg cursor-pointer overflow-hidden relative"
       >
@@ -65,11 +71,13 @@ function Header({ scroll }) {
               handleClick={handleClick}
               title="Sponsors"
             /> */}
-            <JumpTag
-              href="#register"
-              handleClick={handleClick}
-              title="Register"
-            />
+            {window.innerWidth < 768 && (
+              <JumpTag
+                href="#register"
+                handleClick={handleClick}
+                title="Register"
+              />
+            )}
           </div>
         </div>
       </div>
@@ -79,7 +87,7 @@ function Header({ scroll }) {
         className="group hover:w-56 hidden md:block transition-all duration-300 ease-out w-52 bg-black rounded-bl-xl
         cursor-pointer overflow-hidden relative"
         onClick={() => {
-          const eleToScroll = document.querySelector('#register');
+          const eleToScroll = document.querySelector("#register");
           if (scroll) {
             scroll.scrollTo(eleToScroll);
           }

@@ -7,7 +7,7 @@ function Feed() {
   const logo = "/images/logo.png";
 
   return (
-    <section data-scroll-section className="w-full tmLand h-screen bg-cover">
+    <section id='feed' data-scroll-section className="w-full tmLand h-screen bg-cover">
       {/* Overlay */}
       <div
         data-scroll

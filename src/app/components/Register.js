@@ -66,16 +66,19 @@ function Register() {
                  rounded-lg cursor-pointer flex items-center transition-all duration-150 ease-out
                 justify-evenly group  hover:bg-slate-100"
           >
-            <Link href={""}>
-              <h4
-                data-scroll
-                className="text-2xl group-hover:text-slate-800
+            <h4
+              data-scroll
+              className="text-2xl group-hover:text-slate-800
                      group-hover:scale-90 transition-all duration-150 ease-in
                      font-semibold"
+            >
+              <Link
+                target="_blank"
+                href={"https://forms.gle/cRQnasyEQwamosxz7"}
               >
                 Register Now
-              </h4>
-            </Link>
+              </Link>
+            </h4>
           </div>
         </div>
         <div data-scroll className="hidden md:block h-72">
