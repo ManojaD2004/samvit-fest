@@ -60,26 +60,23 @@ function Register() {
               Instagram: samvit.2023
             </Link>
           </h3>
-          <div
-            data-scroll
-            className="md:w-72 md:h-20 h-20 bg-gradient-to-tr bg-slate-800
+          <Link target="_blank" href={"https://forms.gle/cRQnasyEQwamosxz7"}>
+            <div
+              data-scroll
+              className="md:w-72 md:h-20 h-20 bg-gradient-to-tr bg-slate-800
                  rounded-lg cursor-pointer flex items-center transition-all duration-150 ease-out
                 justify-evenly group  hover:bg-slate-100"
-          >
-            <h4
-              data-scroll
-              className="text-2xl group-hover:text-slate-800
+            >
+              <h4
+                data-scroll
+                className="text-2xl group-hover:text-slate-800
                      group-hover:scale-90 transition-all duration-150 ease-in
                      font-semibold"
-            >
-              <Link
-                target="_blank"
-                href={"https://forms.gle/cRQnasyEQwamosxz7"}
               >
                 Register Now
-              </Link>
-            </h4>
-          </div>
+              </h4>
+            </div>
+          </Link>
         </div>
         <div data-scroll className="hidden md:block h-72">
           <img data-scroll className="h-full object-cover invert" src={logo} />

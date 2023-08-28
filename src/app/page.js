@@ -14,10 +14,12 @@ import Brochure from "./components/Brochure";
 import { AnimatePresence } from "framer-motion";
 import Loading from "./components/Loading";
 import Footer from "./components/Footer";
+import BrouchreDownloadPopUp from "./components/BrouchreDownloadPopUp";
 
 export default function Home() {
   const [LocoScroll, setLocoScroll] = useState(null);
   const [brImg, setBrImg] = useState(null);
+  const [brDwload, setBrDwload] = useState(true);
 
   useEffect(() => {
     async function getLocomotive() {
@@ -52,6 +54,9 @@ export default function Home() {
         <Loading />
       ) : (
         <>
+          {/* <AnimatePresence mode="wait">
+            {brDwload && (<BrouchreDownloadPopUp setBrDwload={setBrDwload} />)}
+          </AnimatePresence> */}
           <Lines />
           <Feed />
           <Events />
