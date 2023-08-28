@@ -171,54 +171,63 @@ function Competition({ setBrImg }) {
       <div
         data-scroll
         className="flex justify-center md:justify-between items-center md:mx-14
-        mt-10 flex-wrap gap-x-4 gap-y-4 mx-8"
+        mt-10 md:flex-wrap md:flex-row flex-col md:gap-x-4 md:gap-y-4 mx-8"
       >
-        <CompetitonLogo
-          data-scroll
-          onClick={() => {
-            handleClick("all");
-          }}
-          title="All Competition"
-          logoSrc="https://img.icons8.com/external-bearicons-glyph-bearicons/100/external-Competition-business-and-marketing-bearicons-glyph-bearicons.png"
-        />
-        <CompetitonLogo
-          data-scroll
-          onClick={() => {
-            handleClick("literary");
-          }}
-          title="Literary"
-          logoSrc="https://img.icons8.com/ios-glyphs/100/quiz.png"
-        />
-        <CompetitonLogo
-          data-scroll
-          onClick={() => handleClick("art")}
-          title="Art and Media"
-          logoSrc="https://img.icons8.com/ios-filled/100/artist.png"
-        />
-        <CompetitonLogo
-          data-scroll
-          onClick={() => handleClick("esports")}
-          title="E-Sports"
-          logoSrc="https://img.icons8.com/ios-filled/100/controller.png"
-        />
-        <CompetitonLogo
-          data-scroll
-          onClick={() => handleClick("tech")}
-          title="Tech"
-          logoSrc="https://img.icons8.com/ios-filled/100/source-code.png"
-        />
-        <CompetitonLogo
-          data-scroll
-          onClick={() => handleClick("misc")}
-          title="Misc"
-          logoSrc="https://img.icons8.com/ios-filled/100/metal-music.png"
-        />
-        <CompetitonLogo
-          data-scroll
-          onClick={() => handleClick("cultural")}
-          title="Cultural"
-          logoSrc="https://img.icons8.com/ios-filled/100/dancing-party.png"
-        />
+        <>
+          <CompetitonLogo
+            data-scroll
+            onClick={() => {
+              handleClick("all");
+            }}
+            title="Show All"
+            logoSrc="https://img.icons8.com/external-bearicons-glyph-bearicons/100/external-Competition-business-and-marketing-bearicons-glyph-bearicons.png"
+            selected={choice === "all"}
+          />
+          <CompetitonLogo
+            data-scroll
+            onClick={() => {
+              handleClick("literary");
+            }}
+            title="Literary"
+            selected={choice === "literary"}
+            logoSrc="https://img.icons8.com/ios-glyphs/100/quiz.png"
+          />
+          <CompetitonLogo
+            data-scroll
+            onClick={() => handleClick("art")}
+            title="Art & Media"
+            selected={choice === "art"}
+            logoSrc="https://img.icons8.com/ios-filled/100/artist.png"
+          />
+          <CompetitonLogo
+            data-scroll
+            onClick={() => handleClick("esports")}
+            title="E-Sports"
+            selected={choice === "esports"}
+            logoSrc="https://img.icons8.com/ios-filled/100/controller.png"
+          />
+          <CompetitonLogo
+            data-scroll
+            onClick={() => handleClick("tech")}
+            title="Tech"
+            selected={choice === "tech"}
+            logoSrc="https://img.icons8.com/ios-filled/100/source-code.png"
+          />
+          <CompetitonLogo
+            data-scroll
+            onClick={() => handleClick("misc")}
+            title="Misc"
+            selected={choice === "misc"}
+            logoSrc="https://img.icons8.com/ios-filled/100/metal-music.png"
+          />
+          <CompetitonLogo
+            data-scroll
+            onClick={() => handleClick("cultural")}
+            title="Cultural"
+            selected={choice === "cultural"}
+            logoSrc="https://img.icons8.com/ios-filled/100/dancing-party.png"
+          />
+        </>
       </div>
       <div
         data-scroll
