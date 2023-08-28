@@ -14,7 +14,7 @@ function CompetitonLogo({ logoSrc, title, onClick, selected }) {
       <img
         data-scroll
         style={{ filter: selected && "invert(0%)" }}
-        className="group-hover:scale-75 md:inline block group-hover:invert-[10%] transition-all duration-200 ease-in object-cover invert h-8 w-8 md:h-12 md:w-12"
+        className="md:group-hover:scale-75 md:inline block group-hover:invert-[10%] transition-all duration-200 ease-in object-cover invert h-8 w-8 md:h-12 md:w-12"
         src={logoSrc}
       />
       <h4
