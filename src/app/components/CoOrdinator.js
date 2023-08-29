@@ -6,7 +6,7 @@ import CoOrdinatorCard from "./CoOrdinatorCard";
 function CoOrdinator() {
   const committeNames = [
     "Vilas C P",
-    "Aditya S",
+    "Aditya Srinivasan",
     "Srajanya Shetty",
     "Hitha A B Gowda",
     "Manoja D",
