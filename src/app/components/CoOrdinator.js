@@ -7,8 +7,8 @@ function CoOrdinator() {
   const committeNames = [
     "Vilas C P",
     "Aditya S",
-    "Hitha A B Gowda",
     "Srajanya Shetty",
+    "Hitha A B Gowda",
     "Manoja D",
     "Harshith M",
     "Abhishek K V",
@@ -21,8 +21,8 @@ function CoOrdinator() {
   const committeWorks = [
     "Student Head",
     "Finance Head",
+    "Finance Head",
     "Security Incharge",
-    "Sponsor Incharge",
     "Web Developer",
     "Brochure Designer",
     "Stage Incharge",
@@ -35,8 +35,8 @@ function CoOrdinator() {
   const committeImg = [
     "vilas.jpeg",
     "aditya.jpeg",
-    "hitha.png",
     "srajanya.jpeg",
+    "hitha.png",
     "manoja.jpeg",
     "harshith.jpeg",
     "abhishek.jpeg",
