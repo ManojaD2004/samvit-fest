@@ -7,6 +7,8 @@ import Competition from "./components/Competition";
 import Sponsorship from "./components/Sponsorship";
 import Register from "./components/Register";
 import Credits from "./components/CreditsPage";
+import db from "./firebase/firebase";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import Lines from "./components/Lines";
 import { useEffect, useState } from "react";
 import CoOrdinator from "./components/CoOrdinator";
@@ -20,6 +22,28 @@ export default function Home() {
   const [LocoScroll, setLocoScroll] = useState(null);
   const [brImg, setBrImg] = useState(null);
   const [brDwload, setBrDwload] = useState(true);
+  const [countViews, setCountViews] = useState(null);
+
+  useEffect(() => {
+    async function logEvents() {
+      const docRef = doc(db, "count", "views");
+      const docSnap = await getDoc(docRef);
+      let countViews;
+      if (docSnap.exists()) {
+        const docSnapData = docSnap.data();
+        countViews = docSnapData.countViews;
+        countViews = countViews + 1;
+      } else {
+        null;
+      }
+      await setDoc(doc(db, "count", "views"), {
+        countViews: countViews,
+      });
+      setCountViews(countViews);
+    }
+
+    logEvents();
+  }, []);
 
   useEffect(() => {
     async function getLocomotive() {
@@ -65,7 +89,7 @@ export default function Home() {
           <AboutUs />
           <CoOrdinator />
           <Register />
-          <Footer />
+          <Footer countViews={countViews} />
           {/* <Credits /> */}
         </>
       )}
