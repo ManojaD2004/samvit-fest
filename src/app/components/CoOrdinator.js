@@ -15,7 +15,6 @@ function CoOrdinator() {
     "Shashikiran",
     "Ashritha S",
     "Sinchan D",
-    "Ashutosh Kumar Jha",
     "Yathiraj P",
   ];
   const committeWorks = [
@@ -29,7 +28,6 @@ function CoOrdinator() {
     "Promotion Head",
     "Dance Committe",
     "Digital Marketing",
-    "Food Committe",
     "Volunter Committe",
   ];
   const committeImg = [
@@ -43,7 +41,6 @@ function CoOrdinator() {
     "shashi.jpg",
     "ashritha.jpeg",
     "sinchan.jpeg",
-    "ashutosh.jpg",
     "yathiraj.jpeg",
   ];
   return (
