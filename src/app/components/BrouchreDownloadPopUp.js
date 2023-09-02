@@ -1,7 +1,7 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-function BrouchreDownloadPopUp({setBrDwload}) {
+function BrouchreDownloadPopUp({ setBrDwload }) {
   return (
     <motion.div
       onClick={() => setBrDwload(false)}
@@ -30,7 +30,7 @@ function BrouchreDownloadPopUp({setBrDwload}) {
         },
       }}
       className="absolute w-screen h-screen top-0 left-0 z-50 bg-[rgba(59,59,59,0.28)]
-     flex justify-center items-center backdrop-blur-md"
+     flex flex-col items-center overflow-y-scroll backdrop-blur-md"
     >
       <motion.div
         initial={{ opacity: 0, scale: 1.2 }}
@@ -45,9 +45,19 @@ function BrouchreDownloadPopUp({setBrDwload}) {
           velocity: 2,
         }}
       >
-        <div className="w-72 h-32 text-lg text-center font-semibold bg-black rounded-lg">
-            Get Date and Timing: Brochure
+        <div className="absolute  top-[5%] cursor-pointer text-lg md:text-2xl right-[5%]">
+          X
         </div>
+        <iframe
+          className="border-none block w-[80vw] h-[90vh] mt-28"
+          src="https://drive.google.com/file/d/1a3FmftLIZTAmC-45CiPpUXHYX9DFJVGA/preview"
+          allow="autoplay"
+        ></iframe>
+        <iframe
+          className="border-none block w-[80vw] h-[90vh] mt-28 mb-28"
+          src="https://drive.google.com/file/d/1Vm4j8Gcgx9adfrVlr4rcPSo2Yr6-sPXj/preview"
+          allow="autoplay"
+        ></iframe>
       </motion.div>
     </motion.div>
   );

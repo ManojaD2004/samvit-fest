@@ -78,9 +78,9 @@ export default function Home() {
         <Loading />
       ) : (
         <>
-          {/* <AnimatePresence mode="wait">
+          <AnimatePresence mode="wait">
             {brDwload && (<BrouchreDownloadPopUp setBrDwload={setBrDwload} />)}
-          </AnimatePresence> */}
+          </AnimatePresence>
           <Lines />
           <Feed />
           <Events />
