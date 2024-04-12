@@ -68,6 +68,32 @@ export default function Home() {
     getLocomotive();
   }, []);
 
+  useEffect(() => {
+    function loadImgPromise() {
+      return new Promise((resolve, reject) => {
+        const img1 = window.document.createElement("img");
+        img1.onload = function () {
+          resolve("done");
+        };
+        img1.onerror = function () {
+          reject("error");
+        };
+        img1.src = "/brochure/all/a_face.png";
+      });
+    }
+
+    async function loadImg() {
+      try {
+        const data = await loadImgPromise();
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    loadImg();
+  }, []);
+
   return (
     <main data-scroll-container className="relative">
       <AnimatePresence mode="wait">
@@ -78,9 +104,9 @@ export default function Home() {
         <Loading />
       ) : (
         <>
-        <AnimatePresence mode="wait">
+          {/* <AnimatePresence mode="wait">
             {brDwload && (<BrouchreDownloadPopUp setBrDwload={setBrDwload} />)}
-          </AnimatePresence>
+          </AnimatePresence> */}
           <Lines />
           <Feed />
           <Events />
