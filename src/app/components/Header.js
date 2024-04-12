@@ -34,7 +34,7 @@ function Header({ scroll }) {
         className="group hidden md:block hover:h-40 h-full transition-all duration-300 ease-out
        w-24 bg-black rounded-br-lg cursor-pointer overflow-hidden relative"
       >
-        <Image
+        <img
           width={38}
           height={38}
           className="group-hover:top-0 group-hover:opacity-0 
@@ -96,7 +96,7 @@ function Header({ scroll }) {
             }
           }}
         >
-          <Image
+          <img
             src={doubleArrowRed}
             className="group-hover:top-[18px] brightness-90 top-10 -rotate-45 absolute transition-all duration-100 ease-out -left-7 group-hover:left-2"
             height={32}
@@ -109,7 +109,7 @@ function Header({ scroll }) {
               Now
             </span>
           </h3>
-          <Image
+          <img
             src={doubleArrow}
             className="invert top-5 -rotate-45 transition-all duration-100 ease-out absolute right-5 group-hover:-top-3 group-hover:-right-4"
             height={32}

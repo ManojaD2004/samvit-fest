@@ -7,7 +7,11 @@ function Feed() {
   const logo = "/images/logo.png";
 
   return (
-    <section id='feed' data-scroll-section className="w-full tmLand h-screen bg-cover">
+    <section
+      id="feed"
+      data-scroll-section
+      className="w-full tmLand h-screen bg-cover"
+    >
       {/* Overlay */}
       <div
         data-scroll
@@ -36,7 +40,6 @@ function Feed() {
             speed={30}
             deletionSpeed={30}
             repeat={Infinity}
-            
             wrapper="h1"
             className="block text-4xl text-center
           md:text-9xl text-white m-0 font-bold"
@@ -46,7 +49,10 @@ function Feed() {
         </div>
 
         {/* Tagline */}
-        <div data-scroll className="absolute w-full text-center md:text-left md:w-auto left-1/2 top-[85%] -translate-y-1/2 -translate-x-1/2 md:translate-x-[none] md:left-[auto] md:translate-y-[none] md:top-36 md:right-48">
+        <div
+          data-scroll
+          className="absolute w-full text-center md:text-left md:w-auto left-1/2 top-[85%] -translate-y-1/2 -translate-x-1/2 md:translate-x-[none] md:left-[auto] md:translate-y-[none] md:top-36 md:right-48"
+        >
           <h4 data-scroll className="text-lg">
             - Embrace the{" "}
             <b data-scroll className="font-bold text-black">
@@ -86,13 +92,16 @@ function Feed() {
         </div>
 
         {/* Big Logo */}
-        <div data-scroll className="w-56 absolute left-1/2 top-[40%] -translate-y-1/2 -translate-x-1/2 md:translate-x-[none] md:left-[auto] md:top-[auto] md:translate-y-[none] md:bottom-24 md:right-[182px]">
-          <Image
+        <div
+          data-scroll
+          className="w-56 absolute left-1/2 top-[40%] -translate-y-1/2 -translate-x-1/2 md:translate-x-[none] md:left-[auto] md:top-[auto] md:translate-y-[none] md:bottom-24 md:right-[182px]"
+        >
+          <img
             data-scroll
             width={0}
             height={0}
             sizes="100vw"
-            style={{ width: '100%', height: 'auto' }}
+            style={{ width: "100%", height: "auto" }}
             alt=""
             src={logo}
             className="invert hover:invert-[95%] 

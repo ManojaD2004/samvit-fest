@@ -53,7 +53,7 @@ function CompetitonCard({ comptTitle, comptImg, delay, onClick }) {
         >
           {comptTitle}
         </h3>
-        <Image
+        <img
           alt=""
           fill={true}
           data-scroll

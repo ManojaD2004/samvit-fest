@@ -7,9 +7,9 @@ function Event({ srcImg, eventTitle, speed }) {
   if (window.innerWidth < 768) {
     dragable = false;
   }
- 
+
   speed = Math.floor(Math.random() * (2 - 3 + 1) + 3);
-  
+
   return (
     <motion.div
       data-scroll
@@ -38,12 +38,12 @@ function Event({ srcImg, eventTitle, speed }) {
     rounded-lg md:mx-4 md:my-8 relative group overflow-hidden
     bg-[#34263e] mx-auto shadow-2xl shadow-gray-800"
       >
-        <Image
+        <img
           data-scroll
           width={0}
           height={0}
           sizes="100vw"
-          style={{width: '100%', height: '100%'}}
+          style={{ width: "100%", height: "100%" }}
           alt=""
           src={srcImg}
           className="group-hover:scale-110 transition-all duration-150
