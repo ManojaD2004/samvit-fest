@@ -6,139 +6,62 @@ import PlusIcons from "./PlusIcons";
 
 function Competition({ setBrImg }) {
   const [choice, setChoice] = useState("all");
+  const [loadingPreloadImagesIn, setLoadingPreloadImagesIn] = useState(false);
   const canChange = useRef(true);
 
-  const brochure = {
-    all: [],
-    literary: ["l_debate", "l_quiz"],
-    art: [
-      "a_face",
-      "a_pencil",
-      "a_paint",
-      "media_reels",
-      "media_short",
-      "m_mad",
-    ],
-    esports: ["esports", "esports", "esports"],
-    tech: ["tech_css", "tech_code", "tech_quiz", "ce", "tech_paper"],
-    misc: ["fashion", "dj", "treasure", "comedy"],
-    cultural: [
-      "cd_group",
-      "cd_solo",
-      "ws_group",
-      "ws_solo",
-      "battle_of_bands",
-      "c_music",
-      "w_music",
-    ],
-  };
-
-  const competitonList = {
-    all: [],
-    literary: ["debate.png", "gk_quiz.jpg"],
-    art: [
-      "face_painting.jpg",
-      "pencil_sketch.jpg",
-      "painting.jpg",
-      "reels.jpeg",
-      "short-film.jpeg",
-      "mad-ads.jpg",
-    ],
-    esports: ["bgmi.jpg", "cod.jpg", "free_fire.jpg"],
-    tech: [
-      "css.jpg",
-      "python.jpg",
-      "tech_quiz.jpeg",
-      "cyber_etimology.jpeg",
-      "paper_present.jpg",
-    ],
-    misc: [
-      "fashion_show.jpeg",
-      "dj_night.jpg",
-      "treasure_hunt.jpg",
-      "stand_up_comedy.jpg",
-    ],
-    cultural: [
-      "classical_group.jpg",
-      "classical_solo.jpg",
-      "western_group.jpg",
-      "western_solo.jpg",
-      "battle-of-the-bands.jpg",
-      "classical_music.jpg",
-      "western_music.jpg",
-    ],
-  };
-
-  const competitonListNames = {
-    all: [],
-    literary: ["Debate", "GK Quiz"],
-    art: [
-      "Face Painting",
-      "Pencil Sketch",
-      "Painting",
-      "Reels Making",
-      "Short-Movie Making",
-      "Mad Ads",
-    ],
-    esports: ["BGMI", "CODM", "Free Fire"],
-    tech: [
-      "CSS Battle",
-      "Debugging - Coding",
-      "Technical Quiz",
-      "Cyber Etimology",
-      "Paper Presentation",
-    ],
-    misc: ["Fashion Show", "DJ Night", "Treasure Hunt", "Stand Up Comedy"],
-    cultural: [
-      "Classical Group",
-      "Classical Solo",
-      "Western Group",
-      "Western Solo",
-      "Battle of Bands",
-      "Classical Singing",
-      "Western Singing",
-    ],
-  };
-
-  function calAll() {
-    competitonListNames.all = [
-      ...competitonListNames.misc,
-      ...competitonListNames.esports,
-      ...competitonListNames.cultural,
-      ...competitonListNames.tech,
-      ...competitonListNames.art,
-      ...competitonListNames.literary,
-    ];
-    competitonList.all = [
-      ...competitonList.misc,
-      ...competitonList.esports,
-      ...competitonList.cultural,
-      ...competitonList.tech,
-      ...competitonList.art,
-      ...competitonList.literary,
-    ];
-    brochure.all = [
-      ...brochure.misc,
-      ...brochure.esports,
-      ...brochure.cultural,
-      ...brochure.tech,
-      ...brochure.art,
-      ...brochure.literary,
-    ];
-  }
-
-  calAll();
-
-  function preload() {
-    for (let i = 0; i < brochure[choice].length; i++) {
-      let img = new window.Image();
-      img.src = `/brochure/${choice}/${brochure[choice][i]}.png`;
+  useEffect(() => {
+    function loadImgPromise(imgElement) {
+      return new Promise((resolve, reject) => {
+        const img1 = new window.Image();
+        img1.loading = "eager";
+        img1.alt = "";
+        img1.className = "my-object-fill";
+        img1.onload = function () {
+          resolve(img1);
+        };
+        img1.onerror = function () {
+          reject("error");
+        };
+        img1.src = imgElement;
+        // console.log(img1.complete);
+      });
     }
-  }
-  preload();
+
+    async function loadImg() {
+      try {
+        for (let uniqueKey in competitonList) {
+          const competitonListSubList = competitonList[uniqueKey];
+          for (let index = 0; index < competitonListSubList.length; index++) {
+            const element = `/competition_images/${uniqueKey}/${competitonListSubList[index]}`;
+            const data = await loadImgPromise(element);
+            console.log(data.complete);
+            if (data.complete) {
+              continue;
+            }
+          }
+        }
+        for (let uniqueKey in brochure) {
+          const brochureSubList = brochure[uniqueKey];
+          for (let index = 0; index < brochureSubList.length; index++) {
+            const element = `/brochure/${uniqueKey}/${brochureSubList[index]}.png`;
+            const data = await loadImgPromise(element);
+            console.log(data.complete);
+            if (data.complete) {
+              continue;
+            }
+          }
+        }
+        setLoadingPreloadImagesIn(true);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    loadImg();
+  }, [choice]);
 
   function handleClick(choice) {
     if (canChange.current === true) {
+      setLoadingPreloadImagesIn(false);
       canChange.current = false;
       setChoice(choice);
       setTimeout(
@@ -240,21 +163,132 @@ function Competition({ setBrImg }) {
         flex-wrap mx-14"
       >
         <AnimatePresence data-scroll mode="wait">
-          {competitonList[choice].map((competitonImg, i) => (
-            <CompetitonCard
-              key={`/competition_images/${choice}/${competitonImg}`}
-              onClick={() =>
-                setBrImg(`/brochure/${choice}/${brochure[choice][i]}.png`)
-              }
-              delay={0.25 * i}
-              comptTitle={competitonListNames[choice][i]}
-              comptImg={`/competition_images/${choice}/${competitonImg}`}
-            />
-          ))}
+          {loadingPreloadImagesIn === true &&
+            competitonList[choice].map((competitonImg, i) => (
+              <CompetitonCard
+                key={`/competition_images/${choice}/${competitonImg}`}
+                onClick={() =>
+                  setBrImg(`/brochure/${choice}/${brochure[choice][i]}.png`)
+                }
+                delay={0.25 * i}
+                comptTitle={competitonListNames[choice][i]}
+                comptImg={`/competition_images/${choice}/${competitonImg}`}
+              />
+            ))}
         </AnimatePresence>
       </div>
     </div>
   );
 }
+
+const brochure = {
+  all: [],
+  literary: ["l_debate", "l_quiz"],
+  art: ["a_face", "a_pencil", "a_paint", "media_reels", "media_short", "m_mad"],
+  esports: ["esports", "esports", "esports"],
+  tech: ["tech_css", "tech_code", "tech_quiz", "ce", "tech_paper"],
+  misc: ["fashion", "dj", "treasure", "comedy"],
+  cultural: [
+    "cd_group",
+    "cd_solo",
+    "ws_group",
+    "ws_solo",
+    "battle_of_bands",
+    "c_music",
+    "w_music",
+  ],
+};
+
+const competitonList = {
+  all: [],
+  literary: ["debate.png", "gk_quiz.jpg"],
+  art: [
+    "face_painting.jpg",
+    "pencil_sketch.jpg",
+    "painting.jpg",
+    "reels.jpeg",
+    "short-film.jpeg",
+    "mad-ads.jpg",
+  ],
+  esports: ["bgmi.jpg", "cod.jpg", "free_fire.jpg"],
+  tech: [
+    "css.jpg",
+    "python.jpg",
+    "tech_quiz.jpeg",
+    "cyber_etimology.jpeg",
+    "paper_present.jpg",
+  ],
+  misc: [
+    "fashion_show.jpeg",
+    "dj_night.jpg",
+    "treasure_hunt.jpg",
+    "stand_up_comedy.jpg",
+  ],
+  cultural: [
+    "classical_group.jpg",
+    "classical_solo.jpg",
+    "western_group.jpg",
+    "western_solo.jpg",
+    "battle-of-the-bands.jpg",
+    "classical_music.jpg",
+    "western_music.jpg",
+  ],
+};
+
+const competitonListNames = {
+  all: [],
+  literary: ["Debate", "GK Quiz"],
+  art: [
+    "Face Painting",
+    "Pencil Sketch",
+    "Painting",
+    "Reels Making",
+    "Short-Movie Making",
+    "Mad Ads",
+  ],
+  esports: ["BGMI", "CODM", "Free Fire"],
+  tech: [
+    "CSS Battle",
+    "Debugging - Coding",
+    "Technical Quiz",
+    "Cyber Etimology",
+    "Paper Presentation",
+  ],
+  misc: ["Fashion Show", "DJ Night", "Treasure Hunt", "Stand Up Comedy"],
+  cultural: [
+    "Classical Group",
+    "Classical Solo",
+    "Western Group",
+    "Western Solo",
+    "Battle of Bands",
+    "Classical Singing",
+    "Western Singing",
+  ],
+};
+
+competitonListNames.all = [
+  ...competitonListNames.misc,
+  ...competitonListNames.esports,
+  ...competitonListNames.cultural,
+  ...competitonListNames.tech,
+  ...competitonListNames.art,
+  ...competitonListNames.literary,
+];
+competitonList.all = [
+  ...competitonList.misc,
+  ...competitonList.esports,
+  ...competitonList.cultural,
+  ...competitonList.tech,
+  ...competitonList.art,
+  ...competitonList.literary,
+];
+brochure.all = [
+  ...brochure.misc,
+  ...brochure.esports,
+  ...brochure.cultural,
+  ...brochure.tech,
+  ...brochure.art,
+  ...brochure.literary,
+];
 
 export default Competition;
