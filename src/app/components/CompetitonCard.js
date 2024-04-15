@@ -57,7 +57,7 @@ function CompetitonCard({ comptTitle, comptImg, delay, onClick }) {
           alt=""
           fill={true}
           data-scroll
-          className="object-cover h-full
+          className="object-cover h-full w-full
         group-hover:scale-125 transition-all duration-150 ease-out"
           src={comptImg}
         />

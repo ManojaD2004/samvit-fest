@@ -6,63 +6,69 @@ import PlusIcons from "./PlusIcons";
 
 function Competition({ setBrImg }) {
   const [choice, setChoice] = useState("all");
+  const [hasSeen, setHasSeen] = useState([]);
   const [loadingPreloadImagesIn, setLoadingPreloadImagesIn] = useState(false);
   const canChange = useRef(true);
 
   useEffect(() => {
-    function loadImgPromise(imgElement) {
-      return new Promise((resolve, reject) => {
-        const img1 = new window.Image();
-        img1.loading = "eager";
-        img1.alt = "";
-        img1.className = "my-object-fill";
-        img1.onload = function () {
-          resolve(img1);
-        };
-        img1.onerror = function () {
-          reject("error");
-        };
-        img1.src = imgElement;
-        // console.log(img1.complete);
-      });
-    }
-
-    async function loadImg() {
-      try {
-        for (let uniqueKey in competitonList) {
-          const competitonListSubList = competitonList[uniqueKey];
-          for (let index = 0; index < competitonListSubList.length; index++) {
-            const element = `/competition_images/${uniqueKey}/${competitonListSubList[index]}`;
-            const data = await loadImgPromise(element);
-            console.log(data.complete + "In For Loop" + index);
-            if (data.complete === true) {
-              continue;
-            }
-          }
-        }
-        for (let uniqueKey in brochure) {
-          const brochureSubList = brochure[uniqueKey];
-          for (let index = 0; index < brochureSubList.length; index++) {
-            const element = `/brochure/${uniqueKey}/${brochureSubList[index]}.png`;
-            const data = await loadImgPromise(element);
-            console.log(data.complete + "In For Loop" + index);
-            if (data.complete === true) {
-              continue;
-            }
-          }
-        }
-        console.log("Done Image Loading!");
-        setLoadingPreloadImagesIn(true);
-      } catch (error) {
-        console.log(error);
+    if (hasSeen.includes(choice) === false) {
+      function loadImgPromise(imgElement) {
+        return new Promise((resolve, reject) => {
+          const img1 = new window.Image();
+          img1.loading = "eager";
+          img1.alt = "";
+          img1.className = "my-object-fill";
+          img1.onload = function () {
+            resolve(img1);
+          };
+          img1.onerror = function () {
+            reject("error");
+          };
+          img1.src = imgElement;
+          // console.log(img1.complete);
+        });
       }
+
+      async function loadImg() {
+        try {
+          const competitonListSubList = competitonList[choice];
+          for (let index = 0; index < competitonListSubList.length; index++) {
+            const element = `/competition_images/${choice}/${competitonListSubList[index]}`;
+            const data = await loadImgPromise(element);
+            // console.log(data.complete + "In For Loop" + index);
+            if (data.complete === true) {
+              continue;
+            }
+          }
+
+          const brochureSubList = brochure[choice];
+          for (let index = 0; index < brochureSubList.length; index++) {
+            const element = `/brochure/${choice}/${brochureSubList[index]}.png`;
+            const data = await loadImgPromise(element);
+            // console.log(data.complete + "In For Loop" + index);
+            if (data.complete === true) {
+              continue;
+            }
+          }
+
+          console.log("Done Image Loading!");
+          setLoadingPreloadImagesIn(true);
+          const newHasSeen = hasSeen.slice();
+          newHasSeen.push(choice);
+          setHasSeen(newHasSeen);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      loadImg();
     }
-    loadImg();
   }, [choice]);
 
   function handleClick(choice) {
     if (canChange.current === true) {
-      setLoadingPreloadImagesIn(false);
+      if (hasSeen.includes(choice) === false) {
+        setLoadingPreloadImagesIn(false);
+      }
       canChange.current = false;
       setChoice(choice);
       setTimeout(
@@ -167,7 +173,6 @@ function Competition({ setBrImg }) {
           {loadingPreloadImagesIn === false ? (
             <>
               <div className="pt-6">Loading...</div>
-              
             </>
           ) : (
             competitonList[choice].map((competitonImg, i) => (
