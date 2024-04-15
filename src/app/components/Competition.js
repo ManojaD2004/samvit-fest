@@ -34,8 +34,8 @@ function Competition({ setBrImg }) {
           for (let index = 0; index < competitonListSubList.length; index++) {
             const element = `/competition_images/${uniqueKey}/${competitonListSubList[index]}`;
             const data = await loadImgPromise(element);
-            console.log(data.complete);
-            if (data.complete) {
+            console.log(data.complete + "In For Loop" + index);
+            if (data.complete === true) {
               continue;
             }
           }
@@ -45,12 +45,13 @@ function Competition({ setBrImg }) {
           for (let index = 0; index < brochureSubList.length; index++) {
             const element = `/brochure/${uniqueKey}/${brochureSubList[index]}.png`;
             const data = await loadImgPromise(element);
-            console.log(data.complete);
-            if (data.complete) {
+            console.log(data.complete + "In For Loop" + index);
+            if (data.complete === true) {
               continue;
             }
           }
         }
+        console.log("Done Image Loading!");
         setLoadingPreloadImagesIn(true);
       } catch (error) {
         console.log(error);
@@ -70,7 +71,7 @@ function Competition({ setBrImg }) {
       );
     }
   }
-
+  console.log(loadingPreloadImagesIn);
   return (
     <div
       data-scroll-section
@@ -163,7 +164,12 @@ function Competition({ setBrImg }) {
         flex-wrap mx-14"
       >
         <AnimatePresence data-scroll mode="wait">
-          {loadingPreloadImagesIn === true &&
+          {loadingPreloadImagesIn === false ? (
+            <>
+              <div className="pt-6">Loading...</div>
+              
+            </>
+          ) : (
             competitonList[choice].map((competitonImg, i) => (
               <CompetitonCard
                 key={`/competition_images/${choice}/${competitonImg}`}
@@ -174,7 +180,8 @@ function Competition({ setBrImg }) {
                 comptTitle={competitonListNames[choice][i]}
                 comptImg={`/competition_images/${choice}/${competitonImg}`}
               />
-            ))}
+            ))
+          )}
         </AnimatePresence>
       </div>
     </div>
