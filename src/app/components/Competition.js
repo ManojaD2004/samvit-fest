@@ -170,23 +170,17 @@ function Competition({ setBrImg }) {
         flex-wrap mx-14"
       >
         <AnimatePresence data-scroll mode="wait">
-          {loadingPreloadImagesIn === false ? (
-            <>
-              <div className="pt-6">Loading...</div>
-            </>
-          ) : (
-            competitonList[choice].map((competitonImg, i) => (
-              <CompetitonCard
-                key={`/competition_images/${choice}/${competitonImg}`}
-                onClick={() =>
-                  setBrImg(`/brochure/${choice}/${brochure[choice][i]}.png`)
-                }
-                delay={0.25 * i}
-                comptTitle={competitonListNames[choice][i]}
-                comptImg={`/competition_images/${choice}/${competitonImg}`}
-              />
-            ))
-          )}
+          {competitonList[choice].map((competitonImg, i) => (
+            <CompetitonCard
+              key={`/competition_images/${choice}/${competitonImg}`}
+              onClick={() =>
+                setBrImg(`/brochure/${choice}/${brochure[choice][i]}.png`)
+              }
+              delay={0.25 * i}
+              comptTitle={competitonListNames[choice][i]}
+              comptImg={`/competition_images/${choice}/${competitonImg}`}
+            />
+          ))}
         </AnimatePresence>
       </div>
     </div>
