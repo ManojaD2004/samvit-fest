@@ -1,6 +1,6 @@
 /* Requires the Docker Pipeline plugin */
 pipeline {
-    agent { docker { image 'node:22.14.0-alpine3.21' } }
+    agent { docker { image 'node:22.14.0-alpine3.21' args '-p 3000:3000' } }
     stages {
         stage('Test') {
             steps {
@@ -20,7 +20,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 retry(3) {
-                    sh 'npm run start'
+                    sh 'npm i -g pm2'
+                    sh 'pm2 start npm --name "nextjs-app" -- run start'
                 }
                 timeout(time: 3, unit: 'MINUTES') {
                     sh 'echo "Hello Timeout"'
