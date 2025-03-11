@@ -14,12 +14,10 @@ import Brochure from "./components/Brochure";
 import { AnimatePresence } from "framer-motion";
 import Loading from "./components/Loading";
 import Footer from "./components/Footer";
-// import BrouchreDownloadPopUp from "./components/BrouchreDownloadPopUp";
 
 export default function Home() {
   const [LocoScroll, setLocoScroll] = useState(null);
   const [brImg, setBrImg] = useState(null);
-  // const [brDwload, setBrDwload] = useState(true);
   const [countViews, setCountViews] = useState(null);
 
   useEffect(() => {
