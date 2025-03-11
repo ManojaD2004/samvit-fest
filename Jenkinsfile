@@ -19,15 +19,13 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'npm install'
-                sh 'npm run build'
+                sh ' docker build -t samvit-app ./'
             }
         }
         stage('Deploy') {
             steps {
                 retry(3) {
-                    sh 'npm i -g pm2'
-                    sh 'pm2 start npm --name "nextjs-app" -- run start'
+                    sh 'docker run -p 3000:3000 -d samvit-app'
                 }
                 timeout(time: 3, unit: 'MINUTES') {
                     sh 'echo "Hello Timeout"'
