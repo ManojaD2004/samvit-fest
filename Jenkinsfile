@@ -16,7 +16,7 @@ pipeline {
                 '''
             }
         }
-        stage('build') {
+        stage('Build') {
             steps {
                 sh 'npm install'
                 sh 'npm run build'
@@ -37,13 +37,13 @@ pipeline {
     post {
         always {
             echo 'This will always run'
-            deleteDir()
+            // deleteDir()
         }
         success {
             echo 'This will run only if successful'
-            mail to: 'manojadkc2004@gmail.com',
-                subject: "Pipeline is successfull",
-                body: "Samvit fest website is running go to http://localhost:3000"
+            // mail to: 'manojadkc2004@gmail.com',
+            //     subject: "Pipeline is successfull",
+            //     body: "Samvit fest website is running go to http://localhost:3000"
         }
         failure {
             echo 'This will run only if failed'
